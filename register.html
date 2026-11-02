@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Become a member | Global Community of Support</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"></head>
+<body data-page="member"><div id="hdr"></div>
+<main id="main" class="formpage"><div class="formbox">
+<h1 style="font-size:1.8rem" data-t="register">Become a member</h1>
+<form id="f" novalidate>
+<label for="nm" data-t="name">Full name</label><input id="nm" autocomplete="name" required>
+<div class="cols2"><div><label for="og" data-t="org">Organization</label><input id="og" autocomplete="organization"></div>
+<div><label for="co" data-t="country">Country</label><input id="co" autocomplete="country-name"></div></div>
+<label for="ro" data-t="role">Role</label>
+<select id="ro"><option>Educator</option><option>Researcher</option><option>Publisher / Editor</option><option>Librarian</option><option>Student</option><option>Workforce / Employer</option><option>Other</option></select>
+<label for="em" data-t="email">Email</label><input id="em" type="email" autocomplete="email" required>
+<label for="pw" data-t="password">Password</label><input id="pw" type="password" autocomplete="new-password" required>
+<label for="pc" data-t="confirm">Confirm password</label><input id="pc" type="password" autocomplete="new-password" required>
+<div id="m" class="msg" role="alert"></div>
+<button class="btn solid" type="submit" data-t="submit_reg">Create my membership</button></form>
+<p class="note"><span data-t="have_acct">Already a member?</span> <a href="login.html" data-t="login">Login</a></p>
+</div></main><div id="ftr"></div>
+<script src="js/auth.js"></script><script src="js/main.js"></script>
+<script>
+document.getElementById('f').onsubmit=async e=>{e.preventDefault();const m=document.getElementById('m');m.className='msg';
+ const bad=k=>{m.className='msg err';m.textContent=t(k)};
+ if(!nm.value.trim()||!em.validity.valid||!em.value)return bad('err_login');
+ if(pw.value.length<8)return bad('err_short');
+ if(pw.value!==pc.value)return bad('err_match');
+ const r=await Auth.register({name:nm.value.trim(),org:og.value.trim(),country:co.value.trim(),role:ro.value,email:em.value.trim(),password:pw.value});
+ if(r.ok)location.href='index.html';else bad('err_exists')};
+</script></body></html>
