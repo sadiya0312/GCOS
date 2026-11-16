@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login | Global Community of Support</title><meta name="description" content="Login">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,400&family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"></head>
+<body data-root="" data-page="member"><div id="hdr"></div>
+<main id="main"><div class="formpage"><div class="formbox"><h1 style="font-size:1.8rem" data-t="login_h">Login to Global Community of Support</h1>
+<form id="f" novalidate><label for="em" data-t="email">Email</label><input id="em" type="email" autocomplete="email" required>
+<label for="pw" data-t="password">Password</label><input id="pw" type="password" autocomplete="current-password" required>
+<div id="m" class="msg" role="alert"></div><button class="btn solid" type="submit" data-t="login">Login</button></form>
+<p class="note"><a href="forgot-password.html" data-t="forgot">Forgot password?</a></p>
+<p class="note"><span data-t="no_acct">Not a member yet?</span> <a href="register.html" data-t="register">Become a member</a></p></div></div><script>document.getElementById('f').onsubmit=async e=>{e.preventDefault();const m=document.getElementById('m');
+const r=await Auth.login(em.value.trim(),pw.value);if(r.ok)location.href='index.html';else{m.className='msg err';m.textContent=t('err_login')}};</script></main><div id="ftr"></div>
+<script src="js/config.js"></script><script src="js/auth.js"></script><script src="js/main.js"></script><script src="js/site.js"></script>
+</body></html>

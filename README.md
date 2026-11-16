@@ -1,22 +1,25 @@
 # Global Community of Support
 
-Static website (HTML/CSS/JS, no build step): light green and white, six languages (English, Español, Français, العربية, 中文, Русский).
+Static website (HTML/CSS/JS, no build step). Light green and white, six languages (English, Español, Français, العربية, 中文, Русский).
 
 ## Pages
-- `index.html` – home (white globe with "Global Support" in 10 languages, stats, links to every section)
-- `tip-sheets.html` – View and Download Tip Sheets (searchable)
-- `green-jobs.html`, `progress-report.html` – Education for Green Jobs and the 2023–24 report
-- `resources.html` – Resource Library: search + category filters for 21 collections
-- `resources/01-… to 21-….html` – one page per collection from the shared resource document
-- `connect.html` – Stay Connected and Communicate (WhatsApp, resource form, LinkedIn)
-- `login.html`, `register.html` – member Login and Become a member
+- `index.html` – home
+- `community-sessions.html` – Community of Support Sessions: free and virtual
+- `resources.html` – Resource Library (20 collections) · `resource.html?s=…` shows one collection
+- `tip-sheets.html`, `green-jobs.html`, `progress-report.html` – Resource Library Examples
+- `connect.html` – Stay Connected and Communicate (WhatsApp group is for logged-in members only)
+- `login.html`, `register.html`, `forgot-password.html`
+- `js/resources-data.js` – the Resource Library content · `js/config.js` – admin email + optional form address
 
 ## Publish on GitHub Pages
-1. Upload everything in this folder to a repository (keep the `css`, `js` and `resources` folders).
-2. Settings → Pages → Deploy from a branch → `main` / `(root)`.
-3. Open `https://<username>.github.io/<repository>/`.
+Upload everything (keep the `css` and `js` folders), then Settings → Pages → Deploy from a branch → `main` / `(root)`.
+**Delete the old `resources` folder** from the repository; it is no longer used.
 
-## Notes
-- Login is a demo: accounts live only in the visitor's browser (localStorage). For real membership connect `js/auth.js` to Firebase, Supabase, etc.
-- Resource entries without a known web address show a "Find online" search link. To add the real link, edit the entry's `<a href>` in the matching `resources/NN-….html` page.
-- Translations: `T` object at the top of `js/main.js`. Tip sheets: `TIPS` array in the same file.
+## Admin: add or edit resources
+1. Open `js/config.js` on GitHub, put your email in `ADMIN_EMAILS`, commit.
+2. On the site choose Become a member and register with that same email, then log in.
+3. The Resource Library page now shows **Add Resource** and **Edit Resource** forms (and an Edit link on every resource).
+4. Changes are saved only in your browser until you click **Download updated resource file**, then upload the downloaded `resources-data.js` to the `js` folder on GitHub (replace the old one). After that everyone sees the update.
+
+## Registrations
+Accounts are stored in each visitor's own browser (demo). To receive each new registration (name, email, organization, country, role, comments) by email or in a sheet, create a free form at formspree.io and paste its address into `FORM_ENDPOINT` in `js/config.js`. For real shared logins use Firebase or Supabase.
