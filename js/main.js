@@ -22,6 +22,12 @@ err_noacct:['No account with this email was found on this device.','No se encont
 back_login:['Back to login','Volver a iniciar sesión','Retour à la connexion','العودة إلى تسجيل الدخول','返回登录','Назад ко входу'],
 wa_locked:['Login to access (members only)','Inicia sesión para acceder (solo miembros)','Connectez-vous pour accéder (réservé aux membres)','سجّل الدخول للوصول (للأعضاء فقط)','登录后访问（仅限会员）','Войдите для доступа (только для участников)'],
 examples_h:['Resource Library Examples','Ejemplos de la biblioteca de recursos','Exemples de la bibliothèque de ressources','أمثلة من مكتبة الموارد','资源库示例','Примеры из библиотеки ресурсов'],
+send_code:['Send me a code','Enviarme un código','Envoyez-moi un code','أرسل لي رمزًا','发送验证码','Отправить код'],
+code:['Code from your email','Código de tu correo','Code reçu par e-mail','الرمز من بريدك الإلكتروني','邮件中的验证码','Код из письма'],
+code_sent:['If this email has an account, a code was sent. Enter it below.','Si este correo tiene una cuenta, se envió un código. Introdúcelo abajo.','Si cet e-mail a un compte, un code a été envoyé. Saisissez-le ci-dessous.','إذا كان لهذا البريد حساب، فقد أُرسل رمز. أدخله أدناه.','如果该邮箱已注册，验证码已发送。请在下方输入。','Если у этой почты есть аккаунт, код отправлен. Введите его ниже.'],
+err_code:['The code is wrong or has expired.','El código es incorrecto o ha caducado.','Le code est incorrect ou a expiré.','الرمز غير صحيح أو انتهت صلاحيته.','验证码错误或已过期。','Код неверный или истёк.'],
+err_server:['Could not reach the member service. Please try again.','No se pudo conectar con el servicio de miembros. Inténtalo de nuevo.','Impossible de joindre le service des membres. Réessayez.','تعذّر الوصول إلى خدمة الأعضاء. حاول مرة أخرى.','无法连接会员服务，请重试。','Не удалось связаться со службой участников. Повторите попытку.'],
+err_locked:['Too many attempts. Please wait 15 minutes.','Demasiados intentos. Espera 15 minutos.','Trop de tentatives. Patientez 15 minutes.','محاولات كثيرة. انتظر 15 دقيقة.','尝试次数过多，请等待15分钟。','Слишком много попыток. Подождите 15 минут.'],
 login:['Login','Iniciar sesión','Connexion','تسجيل الدخول','登录','Войти'],
 register:['Become a member','Hazte miembro','Devenir membre','كن عضوًا','成为会员','Стать участником'],
 logout:['Logout','Cerrar sesión','Déconnexion','تسجيل الخروج','退出','Выйти'],
@@ -70,7 +76,6 @@ const TIPS=[
 ['Academic Societies','Academic societies can enhance how research can help solve urgent societal issues, connect researchers to policymakers and practitioners to improve the utilization of research results and inform the research agendas, and cultivate a culture of action for a sustainable society by researchers, educators, and other society members.','academic-societies']
 ];
 const LINKS={
-wa:'https://uspartnership-dot-yamm-track.appspot.com/2kM8T0p6yCm1lCs0U8SybwSlm2svbJl6fQ4bPQnlOtz2QIT9eoQHZSyySyF603Gk6g10r5DdRTq8DKh2XJMkMV9_ySPqCP3QX36IbJURjy9QFOubZd3zPt6Zo6R3OtzqKKwUQ0a5-Yuc1nsJqyHl0HfusBk90yqRXAPTDgZ_opvn2YzwoKGKEVVgPq5-CDYeW2t17aSFjioZeHPYhVg',
 form:'https://uspartnership-dot-yamm-track.appspot.com/2jEvY3Ykr1mDP_wL93ni1saGSWfkFDoPXAg7ouka2rViWIT9eoQHGM65sWd5pKTxa6JGSZib76usAy8l224sudpyqclBWPC-27k90_Sj2LNmMGpv0Qf8_Hqs23g78jyva8SfGqzfkeByFPW7bk3L1AmTXlU2xOn7PvZqqQV5LegJABYHpnU2n-07fVWr-xRfKtiJetFUeGDd_xmdVdvsrcNXmGy9NjeTzbKVBHpcpGkvp1CnByVO_AqLrtacU1yjUECpMIgEi2wg',
 li:'https://uspartnership-dot-yamm-track.appspot.com/2EZMZdRc56sPVNebAIzgzYIYPBsj85ChXRElM-j2-yCahIT9eoQHhFQ16AsDiGhrP6P-t3EbmtEztfO3E6B9toBi91--D3WpgkPN2G_6sYW0-K7SErq1cSYkC9j_fS_58u6OiSMbteaKfMlNglDBGOGfoNH2cxyS1FmTBYD4OQuXJNI7NoKg1HhLPFj163PtTh7Y'};
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};

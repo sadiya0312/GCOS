@@ -1,6 +1,6 @@
 /* Resource Library data. Admins can download an updated copy from the Resource Library page and replace this file. */
 window.RESOURCES={
- "version": 1794791227555,
+ "version": 1794792005633,
  "sections": [
   {
    "slug": "community-sessions",

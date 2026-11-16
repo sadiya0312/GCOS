@@ -1,9 +1,11 @@
 /* Site settings you can edit */
 const CFG={
-  /* People who log in with these emails see the Admin tools (Add / Edit Resource) on the Resource Library page.
-     Replace with your own email, then register on the site using that same email. */
+  /* Paste the Web app address of your Google Sheet script here (see README, "Connect Google Sheets").
+     When set, registration, login and password reset use your Google Sheet. */
+  SCRIPT_URL:'https://script.google.com/macros/s/AKfycbwhyWyZi5orixAQevvNY2g4wuiP_pdYlnzc4T3PE1WgLt7GuAqEntpXccBAPdcSenf3/exec',
+
+  /* ---- Only used while SCRIPT_URL is empty (demo mode, accounts stay in each visitor's browser) ---- */
   ADMIN_EMAILS:['admin@example.org'],
-  /* Optional: paste a Formspree (or similar) form address here, e.g. 'https://formspree.io/f/xxxxxxx'.
-     Each new registration (name, email, organization, country, role, comments - never the password) will be sent there. */
+  WHATSAPP_URL:'',
   FORM_ENDPOINT:''
 };
