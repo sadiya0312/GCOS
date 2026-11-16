@@ -16,11 +16,12 @@
 <label for="pc" data-t="confirm">Confirm password</label><input id="pc" type="password" autocomplete="new-password" required>
 <label for="cm" data-t="comments">Question/Comments</label><textarea id="cm" rows="4"></textarea>
 <div id="m" class="msg" role="alert"></div><button class="btn solid" type="submit" data-t="submit_reg">Create my membership</button></form>
-<p class="note"><span data-t="have_acct">Already a member?</span> <a href="login.html" data-t="login">Login</a></p></div></div><script>document.getElementById('f').onsubmit=async e=>{e.preventDefault();const m=document.getElementById('m');m.className='msg';
-const bad=k=>{m.className='msg err';m.textContent=t(k)};
-if(!nm.value.trim()||!em.value||!em.validity.valid)return bad('err_login');
-if(pw.value.length<8)return bad('err_short');if(pw.value!==pc.value)return bad('err_match');
-const r=await Auth.register({name:nm.value.trim(),org:og.value.trim(),country:co.value.trim(),role:ro.value.trim(),email:em.value.trim(),password:pw.value,comments:cm.value.trim()});
-if(r.ok)location.href='index.html';else bad('err_exists')};</script></main><div id="ftr"></div>
+<p class="note"><span data-t="have_acct">Already a member?</span> <a href="login.html" data-t="login">Login</a></p></div></div><script>const msgBox=(k,ok)=>{const m=document.getElementById('m');m.className='msg '+(ok?'ok':'err');m.textContent=t(k)};
+const busy=(on)=>{const b=document.querySelector('#f button[type=submit]');if(b)b.disabled=on};
+document.getElementById('f').onsubmit=async e=>{e.preventDefault();
+if(!nm.value.trim()||!em.value||!em.validity.valid)return msgBox('err_login');
+if(pw.value.length<8)return msgBox('err_short');if(pw.value!==pc.value)return msgBox('err_match');
+busy(true);const r=await Auth.register({name:nm.value.trim(),org:og.value.trim(),country:co.value.trim(),role:ro.value.trim(),email:em.value.trim(),password:pw.value,comments:cm.value.trim()});busy(false);
+if(r.ok)location.href='index.html';else msgBox(Auth.errKey(r,'err_server'))};</script></main><div id="ftr"></div>
 <script src="js/config.js"></script><script src="js/auth.js"></script><script src="js/main.js"></script><script src="js/site.js"></script>
 </body></html>

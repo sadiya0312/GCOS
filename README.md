@@ -15,11 +15,16 @@ Static website (HTML/CSS/JS, no build step). Light green and white, six language
 Upload everything (keep the `css` and `js` folders), then Settings → Pages → Deploy from a branch → `main` / `(root)`.
 **Delete the old `resources` folder** from the repository; it is no longer used.
 
-## Admin: add or edit resources
-1. Open `js/config.js` on GitHub, put your email in `ADMIN_EMAILS`, commit.
-2. On the site choose Become a member and register with that same email, then log in.
-3. The Resource Library page now shows **Add Resource** and **Edit Resource** forms (and an Edit link on every resource).
-4. Changes are saved only in your browser until you click **Download updated resource file**, then upload the downloaded `resources-data.js` to the `js` folder on GitHub (replace the old one). After that everyone sees the update.
+## Connect Google Sheets (members, login, forgot password, WhatsApp)
+1. Create a Google Sheet, then Extensions > Apps Script. Paste the contents of `members-script.gs` (keep this file private; do not upload it to GitHub). Change `ADMIN_EMAILS`.
+2. Choose `setup` in the function list and click Run; approve the permissions.
+3. Deploy > New deployment > type Web app. Execute as: Me. Who has access: Anyone. Deploy, copy the Web app URL.
+4. Paste that URL into `SCRIPT_URL` in `js/config.js` on GitHub.
+5. Register on the site. A row appears in the Members sheet. The people listed in `ADMIN_EMAILS` see the Admin tools on the Resource Library page after they log in.
+After editing the script later, use Deploy > Manage deployments > Edit > New version.
 
-## Registrations
-Accounts are stored in each visitor's own browser (demo). To receive each new registration (name, email, organization, country, role, comments) by email or in a sheet, create a free form at formspree.io and paste its address into `FORM_ENDPOINT` in `js/config.js`. For real shared logins use Firebase or Supabase.
+## Admin: add or edit resources
+Log in as an admin. The Resource Library page shows **Add Resource** and **Edit Resource**. Changes are saved in your browser until you click **Download updated resource file** and upload the downloaded `resources-data.js` to the `js` folder on GitHub.
+
+## Demo mode
+While `SCRIPT_URL` is empty, accounts are stored only in each visitor's own browser, and the WhatsApp link stays hidden.

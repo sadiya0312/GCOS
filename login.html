@@ -10,7 +10,10 @@
 <label for="pw" data-t="password">Password</label><input id="pw" type="password" autocomplete="current-password" required>
 <div id="m" class="msg" role="alert"></div><button class="btn solid" type="submit" data-t="login">Login</button></form>
 <p class="note"><a href="forgot-password.html" data-t="forgot">Forgot password?</a></p>
-<p class="note"><span data-t="no_acct">Not a member yet?</span> <a href="register.html" data-t="register">Become a member</a></p></div></div><script>document.getElementById('f').onsubmit=async e=>{e.preventDefault();const m=document.getElementById('m');
-const r=await Auth.login(em.value.trim(),pw.value);if(r.ok)location.href='index.html';else{m.className='msg err';m.textContent=t('err_login')}};</script></main><div id="ftr"></div>
+<p class="note"><span data-t="no_acct">Not a member yet?</span> <a href="register.html" data-t="register">Become a member</a></p></div></div><script>const msgBox=(k,ok)=>{const m=document.getElementById('m');m.className='msg '+(ok?'ok':'err');m.textContent=t(k)};
+const busy=(on)=>{const b=document.querySelector('#f button[type=submit]');if(b)b.disabled=on};
+document.getElementById('f').onsubmit=async e=>{e.preventDefault();busy(true);
+const r=await Auth.login(em.value.trim(),pw.value);busy(false);
+if(r.ok)location.href='index.html';else msgBox(Auth.errKey(r,'err_login'))};</script></main><div id="ftr"></div>
 <script src="js/config.js"></script><script src="js/auth.js"></script><script src="js/main.js"></script><script src="js/site.js"></script>
 </body></html>
